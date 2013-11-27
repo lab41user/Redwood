@@ -81,7 +81,7 @@ class RedwoodFilter(object):
       
         return sorted(combined, key=lambda tup: tup[0])
 
-    def visualize_scatter(self, counts, codes, data, codebook, num_clusters, xlabel="", ylabel=""):
+    def visualize_scatter(self, counts, codes, data, codebook, num_clusters, xlabel="", ylabel="", title=""):
         """
         Generates a 2-d scatter plot visualization of two feature data for 
 
@@ -116,10 +116,11 @@ class RedwoodFilter(object):
         plt.scatter(codebook[:,0], codebook[:,1], color='orange', s=260)
        
         colors = ['red', 'blue', 'green', 'purple', 'cyan', 'black', 'brown', 'grey']
-
+       
         for idx in range(num_clusters):
             plt.scatter(list_arrays[idx][:,0], list_arrays[idx][:,1], c=colors[idx]) 
         
+        plt.title(title)
         plt.ylabel(ylabel)
         plt.xlabel(xlabel)
         plt.show()
