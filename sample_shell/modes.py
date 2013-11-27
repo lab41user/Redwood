@@ -171,7 +171,7 @@ class StandardMode(GeneralMode):
         if len(args) != 1:
             print "Error: pat required"
             return
-        new_filters = core.import_filters(self.cnx,args[0])
+        new_filters = core.import_filters(args[0])
         print "New Filters: "
         print new_filters
     def help(self, args = None):

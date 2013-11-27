@@ -19,7 +19,7 @@
 Created on 19 October 2013
 @author: Lab41
 
-This package contains core helper functions for Redwood
+This module contains core helper functions for Redwood
 """
 
 import sys
@@ -55,7 +55,6 @@ def import_filters(path):
 
     for f in mod_list:
 
-        print f
         #continue if it is not a python file
         if f[-3:] != '.py':
             continue    
@@ -100,7 +99,12 @@ def get_source_info(cnx, source_name):
 
 def get_num_systems(cnx, os_name_or_id):
     """
+    Retrieves the number of unique media sources for a given os
+    
+    :param cnx: mysql connection instance
+    :param os_name_or_id: os name or os id
 
+    :return the number of systems found or None if the os does not exist
     """
     if isinstance(os_name_or_id, (int, long, float, complex)):
         os_id = os_name_or_id
@@ -125,7 +129,13 @@ def get_num_systems(cnx, os_name_or_id):
 
 
 def table_exists(cnx, name):
-    
+    """
+    Checks if the mysql table with <name> exists
+
+    :param cnx: mysql connection instance
+    :param name: table name
+    :return True if exists, else False
+    """
     cursor = cnx.cursor()
     result = None
     try:

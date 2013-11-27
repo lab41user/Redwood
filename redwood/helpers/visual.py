@@ -20,7 +20,7 @@ Created on 19 October 2013
 
 Helper functions for creating visualizations
 """
-
+import array
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib

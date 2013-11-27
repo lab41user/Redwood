@@ -19,7 +19,6 @@
 Created on 19 October 2013
 @author: Lab41
 """
-import array
 from collections import namedtuple
 
 
