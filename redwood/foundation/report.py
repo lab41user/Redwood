@@ -59,75 +59,68 @@ class Report():
             <link href="../resources/css/style.css" rel="stylesheet" type="text/css">
             </head>
             <body>
+            <div id="navigation">
+                <image src="../resources/images/redwood_logo.png" height="35%"/>
+                <dl>
+                    <dt><a href="">Navigation item 1</a></dt>
+                    <dt><a href="">Navigation item 2</a></dt>
+                    <dt><a href="">Navigation item 3</a></dt>
+                    <dt><a href="">Navigation item 4</a></dt>
+                </dl>
+            </div>
+            <div id="top"
             <h2>Report for {}</h2>""".format(source[0]))
             f.write("<h3 class=\"redwood-header\">Source Information</h3>")
             f.write("<dl>")
             f.write("<dt>Acquisition Date: {}</dt>".format(source[1]))
             f.write("<dt>Operating System: {}</dt>".format(source[2]))
-            f.write("</dl>")
-            
-            score_counts = core.get_repuation_by_source(self.cnx, source[0])
-            scores = list()            
-            counts = list()            
-            
-            for s in score_counts:
-                scores.append(s[0])
-                counts.append(s[1])
-            #plt.close()
-            #plt.clf()
-            #plt.pie(counts, autopct='%1.f%%', shadow=True)
-            #plt.title('File Reputations')
-            #plt.show()
-            
+            f.write("</dl></div>")
+
+            score_counts = core.get_repuation_by_source(self.cnx, source[0])            
             table_height = int(math.ceil(len(score_counts) / float(3)))
-            print len(score_counts)
-            print table_height
-            
+            f.write("<div id=\"content\">")
             f.write("<table border=\"1\" id=\"rounded-corner\">")
             f.write("<thead></thead>")
             f.write("""
             <thead>
                 <tr>
-                    <th scope=\"col\" class=\"rounded-head-left\">Score</th>
-                    <th scope=\"col\">Count</th>
-                    <th scope=\"col\">Score</th>
-                    <th scope=\"col\">Count</th>
-                    <th scope=\"col\">Score</th>
-                    <th scope=\"col\" class=\"rounded-head-right\">Count</th>
+                    <th scope="col" class="rounded-head-left">Score</th>
+                    <th scope="col" class="score-divider">Count</th>
+                    <th scope="col">Score</th>
+                    <th scope="col" class="score-divider">Count</th>
+                    <th scope="col">Score</th>
+                    <th scope="col" class="rounded-head-right">Count</th>
                 </tr>
             </thead>
             <tbody>""")
             for i in range(0, table_height):
                 if table_height * 2 + i >= len(score_counts):
                     if i == table_height - 1:
-                        print "Arrived 3"
                         f.write("""
             </tbody>
             <tfoot>
                 <tr>
-                    <td class=\"rounded-foot-left\">{}</td>
+                    <td class="rounded-foot-left">{}</td>
+                    <td class="score-divider">{}</td>
                     <td>{}</td>
-                    <td>{}</td>
-                    <td>{}</td>
+                    <td class="score-divider">{}</td>
                     <td></td>
-                    <td class=\"rounded-foot-right\"></td>
+                    <td class="rounded-foot-right"></td>
                 </tr>
             </tfoot>""".format(score_counts[i][0], score_counts[i][1], \
                 score_counts[table_height + i][0], score_counts[table_height + i][1]))
                     else:
-                        print "Arrived 2"
                         f.write("""
                         <tr>
                             <td>{}</td>
+                            <td class="score-divider">{}</td>
                             <td>{}</td>
-                            <td>{}</td>
-                            <td>{}</td>
+                            <td class="score-divider">{}</td>
                             <td></td>
                             <td></td>
                         </tr>""".format(score_counts[i][0], score_counts[i][1], \
                         score_counts[table_height + i][0], score_counts[table_height + i][1]))
                 else:
-                    print "Arrived!"
                     f.write("""
                         <tr>
                             <td>{}</td>
@@ -139,15 +132,17 @@ class Report():
                         </tr>""".format(score_counts[i][0], score_counts[i][1], \
                     score_counts[table_height + i][0], score_counts[table_height + i][1], \
                     score_counts[table_height * 2 + i][0], score_counts[table_height * 2 + i][1]))
-            f.write("</table>") 
-            filter_survey = ""           
+            f.write("""
+            </table>
+            </div>
+            """)
+            filter_survey = ""
             #for d in os.listdir(report_dir + "/filters"):
             #    if os.path.isdir(os.path.join(report_dir + "/filters", d)) and d[0] != '.':
             #        filter_survey = os.path.join("filters/" + d, "survey.html")
             #        f.write("""
             #        <iframe src=\"{}\" width=\"100%\" height=\"100%\"></iframe>
             #            """.format(filter_survey))
-            #f.write()
 
             f.write("</body></html>")
             f.close()
