@@ -1,0 +1,86 @@
+.redwood-header
+{
+	background-color: orange;
+}
+
+#rounded-corner
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 15px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+	border-style: hidden;
+}
+#rounded-corner thead th.rounded-head-left
+{
+	background: orange url('../images/topleft.png') left -1px no-repeat;
+}
+#rounded-corner thead th.rounded-head-right
+{
+	background: orange url('../images/topright.png') right -1px no-repeat;
+}
+#rounded-corner th
+{
+	padding: 8px;
+	font-weight: normal;
+	font-size: 13px;
+	color: black;
+	background: orange;
+}
+#rounded-corner th.score-divider
+{
+	background: #FFE0A2
+}
+#rounded-corner th.count-divider
+{
+	border-right: 2px solid;
+}
+#rounded-corner td
+{
+	padding: 8px;
+	background: #FFE0B2;
+	border-top: 1px solid #fff;
+	color: black;
+}
+#rounded-corner td.score-divider
+{
+	border-right: 2px solid;
+}
+#rounded-corner tfoot td.rounded-foot-left
+{
+	background: #FFE0B2 url('../images/botleft.png') left bottom no-repeat;
+}
+#rounded-corner tfoot td.rounded-foot-right
+{
+	background: #FFE0B2 url('../images/botright.png') right bottom no-repeat;
+}
+#rounded-corner tbody tr:hover td
+{
+	background: #FFC266;
+}
+div#top
+{
+	margin-left: 225px
+}
+div#navigation
+{
+	position: fixed;
+	width: 200px;
+	height: 50%;
+	top: 15%
+	right: auto;
+	bottom: 100px
+	left: 0;
+	color: #ffffff;
+	background-color: #FFE0B2;
+	background-image: url('../images/topleftnav.png'), url('../images/toprightnav.png'), url('../images/botright.png'), url('../images/botleft.png');
+	background-position: left top, right top, right bottom, left bottom;
+	background-repeat: no-repeat;
+	padding: 5px;
+}
+div#content
+{
+	margin-left: 210px;
+}
